@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    
+    <head>
+        <meta charset="utf-8">
+        <title>botão qual é o seu nome</title>
+
+    </head>
+
+    <body>
+        <button>Aperte-me</button>
+    </body>
+    
+    <script>
+        
+        var button = document.querySelector('button');
+
+        button.onclick = function() {
+            var nome = prompt('Qual é o seu nome?');
+            alert('Olá ' + nome + ', é um prazer te ver!');
+        }
+    </script>
+
+</html>

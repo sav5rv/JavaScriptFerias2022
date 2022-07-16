@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>botão iniciar</title>
+
+    </head>
+
+    <body>
+        <button>Iniciar máquina</button>
+        <p>A máquina está parada.</p>
+
+
+    </body>
+
+    <script>
+        var btn = document.querySelector('button');
+        var txt = document.querySelector('p');
+
+        btn.addEventListener('click', updateBtn);
+
+        function updateBtn() {
+            if (btn.textContent === 'Iniciar máquina') {
+                btn.textContent = 'Parar máquina';
+                txt.textContent = 'A máquina iniciou!';
+            } else {
+                btn.textContent = 'Iniciar máquina';
+                txt.textContent = 'A máquina está parada.';
+            }
+        }
+
+
+    </script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<htmml lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Filtrando mensagens de saudação</title>
+    </head>
+
+    <body>
+        <ul>
+            <li>Happy Birthday!</li>
+            <li>Merry Christmas my love</li>
+            <li>A happy Christmas to all the family</li>
+            <li>You\'re all I want for Christmas</li>
+            <li>Get well soon</li>
+        </ul>
+    </body>
+
+    <script>
+        var list = document.querySelector('ul');
+        list.innerHTML = ' ';
+        var greetings = ['Happy Birthday!',
+                 'Merry Christmas my love',
+                 'A happy Christmas to all the family',
+                 'You\'re all I want for Christmas',
+                 'Get well soon'];
+
+        for (var i = 0; i < greetings.length; i++) {
+            var input = greetings[i];
+            // Seu teste condicional precisa ir dentro dos parênteses
+            // na linha abaixo, substituindo o que está lá
+            if (greetings[i].indexOf('Christmas') !== -1) {
+                var result = input;
+                var listItem = document.createElement('li');
+                listItem.textContent = result;
+                list.appendChild(listItem);
+            }
+        }
+
+    </script>
+</htmml>

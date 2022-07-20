@@ -37,6 +37,7 @@ function result() {
     const weight = Math.round(300 * 0,45) + ' stone';
     const temperature =  Math.round((94 - 35) / 1,8) + ' centigrade';
     
+    
     }
 
     story.textContent = ;

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Criando uma função Caixa de Mensagem</title>
+
+    <style>
+      .msgBox {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 242px;
+        background: #eee;
+      }
+
+      .msgBox p {
+        line-height: 1.5;
+        padding: 10px 20px;
+        color: #333;
+        padding-left: 82px;
+        background-position: 25px center;
+        background-repeat: no-repeat;
+      }
+
+      .msgBox button {
+        background: none;
+        border: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.1rem;
+        color: #aaa;
+      }
+
+    </style>
+  </head>
+  <body>
+    <button>Display message box</button>
+
+    <script>
+      var btn = document.querySelector('button');
+      //     btn.onclick = displayMessage;
+
+      // Se quisermos especificar parâmetros dentro de parênteses para a função que estamos chamando, 
+      // então não podemos chamá-la diretamente — precisamos colocá-lo dentro de uma função anônima para que não fique
+      // no escopo imediato e, portanto, não seja chamado imediatamente. Agora ele não será chamado 
+      // até que o botão seja clicado.
+
+      btn.onclick = function() {
+        displayMessage('Your inbox is almost full — delete some mails', 'warning');
+      }
+
+      function displayMessage(msgText, msgType) {
+        var html = document.querySelector('html'); //selecionar o elemento
+
+        var panel = document.createElement('div'); //criar um elemento 
+        panel.setAttribute('class', 'msgBox'); //setar o atributo class com valor msgBox
+        html.appendChild(panel); //aninha um elemento dentro do outro como filho dele. 
+                                 //Especificamos o painel <div> como o filho que queremos anexar dentro do elemento <body>.
+
+        var msg = document.createElement('p');
+        msg.textContent = msgText;
+        panel.appendChild(msg);
+
+        var closeBtn = document.createElement('button');
+        closeBtn.textContent = 'x - x';
+        panel.appendChild(closeBtn);
+
+        closeBtn.onclick = function() {          // usamos um manipulador eventos GlobalEventHandlers.onclick
+            panel.parentNode.removeChild(panel); //remover um elemento filho específico do elemento HTML
+        }
+
+        if (msgType === 'warning') {
+            msg.style.backgroundImage = 'url(https://raw.githubusercontent.com/mdn/learning-area/master/javascript/building-blocks/functions/icons/warning.png)';
+            panel.style.backgroundColor = 'red';
+        } else if (msgType === 'chat') {
+            msg.style.backgroundImage = 'url(icons/chat.png)';
+            panel.style.backgroundColor = 'aqua';
+        } else {
+            msg.style.paddingLeft = '20px';
+        }
+      }
+
+      //displayMessage(); //chama a função
+
+
+        /* Basicamente, todo esse bloco de código está gerando um bloco de HTML semelhante a isso e inserindo-o na página:
+        <div class="msgBox">
+            <p>This is a message box</p>
+            <button>x</button>
+        </div>       */
+    </script>
+  </body>
+</html>

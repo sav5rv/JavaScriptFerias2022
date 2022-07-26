@@ -12,9 +12,33 @@ function update(bgColor, textColor) {
   html.style.color = textColor;
 }
 
-select.onchange = function() {
+//operador ternário para If Else
+/* select.onchange = function() {
   ( select.value === 'black' ) ? update('black','white') : update('white','black');
-}
+} */
+
+//operador ternário para Switch
+select.onchange = function() {
+    var choice = select.value;
+  
+    switch(choice) {
+      case 'black':
+        update('black','white');
+        break;
+      case 'white':
+        update('white','black');
+        break;
+      case 'purple':
+        update('purple','white');
+        break;
+      case 'yellow':
+        update('yellow','darkgray');
+        break;
+      case 'psychedelic':
+        update('lime','purple');
+        break;
+    }
+  }
 
 function createCalendar() {
     var choice = select2.value;

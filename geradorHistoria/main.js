@@ -1,16 +1,17 @@
-const customName = document.getElementById('customname');
-const randomize = document.querySelector('.randomize');
-const story = document.querySelector('.story');
+const customName  = document.getElementById('customname');
+const randomize   = document.querySelector('.randomize');
+const story       = document.querySelector('.story');
 
 function randomValueFromArray(array){
-  const random = Math.floor(Math.random()*array.length);
+  const random = Math.floor(Math.random() * array.length);
   return array[random];
 }
 
-var storyText = 'It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.';
-var insertX = ['Willy the Goblin',
-               'Big Daddy',
-               'Father Christmas'];
+var storyText = 'It was 94 fahrenheit outside, so :insertX: went for a walk. When they got to :insertY:, they stared in horror for a few moments, then :insertZ:. Bob saw the whole thing, but was not surprised — :insertX: weighs 300 pounds, and it was a hot day.';
+
+var insertX = ['valor X 1',
+               'valor X 2',
+               'valor X 3'];
 
 var insertY = ['the soup kitchen',
                'Disneyland',
@@ -24,22 +25,30 @@ randomize.addEventListener('click', result); //ouvinte de evento de clique à va
 
 function result() {
     var newStory = storyText;
+    //alert(newStory);
+    
     var xItem = randomValueFromArray(insertX);
+    newStory = newStory.replaceAll(':insertX:',xItem);
+    
     var yItem = randomValueFromArray(insertY);
+    newStory = newStory.replaceAll(':insertY:',yItem);
+    
     var zItem = randomValueFromArray(insertZ);
+    newStory = newStory.replaceAll(':insertZ:',zItem);
 
     if(customName.value !== '') {
-    const name = customName.value;
-    const updated = newStory.replace('name','Bob');
+      const name = customName.value;
+      const updated = newStory.replace('Bob',name);
     }
 
     if(document.getElementById("uk").checked) {
-    const weight = Math.round(300 * 0,45) + ' stone';
-    const temperature =  Math.round((94 - 35) / 1,8) + ' centigrade';
+      const weight = `${Math.round(300 * 0.0714286)} stone`;
+      const temperature =  `${Math.round((94 - 32) * 5 / 9)} centigrade`;
     
-    
+      newStory = newStory.replaceAll('94 fahrenheit', temperature);
+      newStory = newStory.replaceAll('300 pounds', weight);
     }
 
-    story.textContent = ;
+    story.textContent = newStory;
     story.style.visibility = 'visible';
 }
